@@ -9,13 +9,21 @@
 import SwiftUI
 
 struct OutputView: View {
+    let data: String?
+
+    init(_ data: String?) {
+        self.data = data
+    }
+
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        ScrollView {
+            Text(data ?? "Response is empty.")
+        }
     }
 }
 
 struct OutputView_Previews: PreviewProvider {
     static var previews: some View {
-        OutputView()
+        OutputView("Test")
     }
 }

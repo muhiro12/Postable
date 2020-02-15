@@ -7,13 +7,20 @@
 //
 
 import SwiftUI
+import Hydra
 
 struct InputView: View {
     @State private var isPresented = false
     @State private var text = ""
+    @State private var output: String?
+
+    private let api = API()
 
     var body: some View {
         Form {
+            Section(header: Text("URL")) {
+                TextField("URL", text: $text)
+            }
             Section(header: Text("Header")) {
                 HStack {
                     TextField("key", text: $text)
@@ -49,12 +56,38 @@ struct InputView: View {
                 }
             }
             Button(action: {
-                self.isPresented.toggle()
+                self.tapButton()
             }, label: {
                 Text("Button")
             })
         }.sheet(isPresented: $isPresented) {
-            OutputView()
+            OutputView(self.output)
+        }
+    }
+}
+
+extension InputView {
+    private func tapButton() {
+        guard let url = URL(string: text) else {
+            return
+        }
+
+        let target = Target(baseURL: url,
+                            path: "",
+                            method: .get,
+                            task: .requestPlain)
+        var output: String?
+        _ = async { _ in
+            let result = try await(self.api.request(target: target))
+            switch result {
+            case .success(let response):
+                output = String(data: response.data, encoding: .utf8)
+            case .failure(let error):
+                output = error.errorDescription
+            }
+        }.then {
+            self.output = output
+            self.isPresented.toggle()
         }
     }
 }

@@ -31,7 +31,7 @@ struct Target: TargetType {
 
     var method: Moya.Method
 
-    var sampleData: Data
+    var sampleData: Data = Data()
 
     var task: Task
 
