@@ -23,6 +23,7 @@
 
 /* Begin PBXFileReference section */
 		AD74C4C723F7FC8B009EA34A /* ActivityInndicator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityInndicator.swift; sourceTree = "<group>"; };
+		ADBDFD6523F8107700CF94DA /* Postable.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Postable.entitlements; sourceTree = "<group>"; };
 		ADF08F8923F782F9007C0263 /* Postable.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Postable.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		ADF08F8C23F782F9007C0263 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		ADF08F8E23F782F9007C0263 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -68,6 +69,7 @@
 		ADF08F8B23F782F9007C0263 /* Postable */ = {
 			isa = PBXGroup;
 			children = (
+				ADBDFD6523F8107700CF94DA /* Postable.entitlements */,
 				ADF08F8C23F782F9007C0263 /* AppDelegate.swift */,
 				ADF08F8E23F782F9007C0263 /* SceneDelegate.swift */,
 				ADF08F9023F782F9007C0263 /* ContentView.swift */,
@@ -349,7 +351,9 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = Postable/Postable.entitlements;
 				CODE_SIGN_STYLE = Automatic;
+				DERIVE_MACCATALYST_PRODUCT_BUNDLE_IDENTIFIER = YES;
 				DEVELOPMENT_ASSET_PATHS = "\"Postable/Preview Content\"";
 				DEVELOPMENT_TEAM = 66PKF55HK5;
 				ENABLE_PREVIEWS = YES;
@@ -360,6 +364,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.nakano.hiromu.Postable;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTS_MACCATALYST = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -369,7 +374,9 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = Postable/Postable.entitlements;
 				CODE_SIGN_STYLE = Automatic;
+				DERIVE_MACCATALYST_PRODUCT_BUNDLE_IDENTIFIER = YES;
 				DEVELOPMENT_ASSET_PATHS = "\"Postable/Preview Content\"";
 				DEVELOPMENT_TEAM = 66PKF55HK5;
 				ENABLE_PREVIEWS = YES;
@@ -380,6 +387,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.nakano.hiromu.Postable;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTS_MACCATALYST = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
