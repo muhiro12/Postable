@@ -14,6 +14,7 @@
 		ADF08F9623F782FC007C0263 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = ADF08F9523F782FC007C0263 /* Preview Assets.xcassets */; };
 		ADF08F9923F782FC007C0263 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = ADF08F9723F782FC007C0263 /* LaunchScreen.storyboard */; };
 		ADF08FA223F7862D007C0263 /* Moya in Frameworks */ = {isa = PBXBuildFile; productRef = ADF08FA123F7862D007C0263 /* Moya */; };
+		ADF08FA523F786DA007C0263 /* Hydra in Frameworks */ = {isa = PBXBuildFile; productRef = ADF08FA423F786DA007C0263 /* Hydra */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -33,6 +34,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				ADF08FA223F7862D007C0263 /* Moya in Frameworks */,
+				ADF08FA523F786DA007C0263 /* Hydra in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -95,6 +97,7 @@
 			name = Postable;
 			packageProductDependencies = (
 				ADF08FA123F7862D007C0263 /* Moya */,
+				ADF08FA423F786DA007C0263 /* Hydra */,
 			);
 			productName = Postable;
 			productReference = ADF08F8923F782F9007C0263 /* Postable.app */;
@@ -126,6 +129,7 @@
 			mainGroup = ADF08F8023F782F9007C0263;
 			packageReferences = (
 				ADF08FA023F7862D007C0263 /* XCRemoteSwiftPackageReference "Moya" */,
+				ADF08FA323F786DA007C0263 /* XCRemoteSwiftPackageReference "Hydra" */,
 			);
 			productRefGroup = ADF08F8A23F782F9007C0263 /* Products */;
 			projectDirPath = "";
@@ -358,6 +362,14 @@
 				minimumVersion = 13.0.1;
 			};
 		};
+		ADF08FA323F786DA007C0263 /* XCRemoteSwiftPackageReference "Hydra" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/malcommac/Hydra.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 2.0.2;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -365,6 +377,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = ADF08FA023F7862D007C0263 /* XCRemoteSwiftPackageReference "Moya" */;
 			productName = Moya;
+		};
+		ADF08FA423F786DA007C0263 /* Hydra */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = ADF08FA323F786DA007C0263 /* XCRemoteSwiftPackageReference "Hydra" */;
+			productName = Hydra;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};
