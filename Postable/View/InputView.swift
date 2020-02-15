@@ -10,55 +10,85 @@ import SwiftUI
 import Hydra
 
 struct InputView: View {
-    @State private var text = ""
-    @State private var target: Target?
+    @State private var url = ""
+    @State private var headersCount = 0
+    @State private var parametersCount = 0
 
     var body: some View {
         Form {
             Section(header: Text("URL")) {
-                TextField("URL", text: $text)
+                TextField("https://example.com", text: $url)
                     .textContentType(.URL)
                     .autocapitalization(.none)
             }
-            Section(header: Text("Header")) {
-                HStack {
-                    TextField("key", text: $text)
-                    Divider()
-                    TextField("value", text: $text)
-                }
-                HStack {
-                    TextField("key", text: $text)
-                    Divider()
-                    TextField("value", text: $text)
-                }
-                HStack {
-                    TextField("key", text: $text)
-                    Divider()
-                    TextField("value", text: $text)
+            Section(header: Text("Method")) {
+                NavigationLink(destination:
+                    Form {
+                        Text("GET")
+                        Text("POST")
+                    }.navigationBarTitle("Header")
+                ) {
+                    Text("GET")
                 }
             }
-            Section(header: Text("Parameter")) {
+            Section(header:
                 HStack {
-                    TextField("key", text: $text)
-                    Divider()
-                    TextField("value", text: $text)
+                    Text("Header")
+                    Spacer()
+                    Button(action: {
+                        if self.headersCount > 0 {
+                            self.headersCount -= 1
+                        }
+                    }, label: {
+                        Image(systemName: "minus")
+                    })
+                    Text(headersCount.description)
+                    Button(action: {
+                        self.headersCount += 1
+                    }, label: {
+                        Image(systemName: "plus")
+                    })
                 }
-                HStack {
-                    TextField("key", text: $text)
-                    Divider()
-                    TextField("value", text: $text)
+            ) {
+                NavigationLink(destination:
+                    KeyValueView(count: headersCount)
+                        .navigationBarTitle("Header")
+                ) {
+                    Text("{key:value}")
                 }
+            }
+            Section(header:
                 HStack {
-                    TextField("key", text: $text)
-                    Divider()
-                    TextField("value", text: $text)
+                    Text("Parameter")
+                    Spacer()
+                    Button(action: {
+                        if self.parametersCount > 0 {
+                            self.parametersCount -= 1
+                        }
+                    }, label: {
+                        Image(systemName: "minus")
+                    })
+                    Text(parametersCount.description)
+                    Button(action: {
+                        self.parametersCount += 1
+                    }, label: {
+                        Image(systemName: "plus")
+                    })
+                }
+            ) {
+                NavigationLink(destination:
+                    KeyValueView(count: parametersCount)
+                        .navigationBarTitle("Parameter")
+                ) {
+                    Text("{key:value}")
                 }
             }
             NavigationLink(destination:
-                OutputView(url: text)
+                OutputView(url: url)
                     .navigationBarTitle("Response")
             ) {
                 Text("Request")
+                    .foregroundColor(.blue)
             }
         }
     }
