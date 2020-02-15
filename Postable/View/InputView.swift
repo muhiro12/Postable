@@ -10,12 +10,8 @@ import SwiftUI
 import Hydra
 
 struct InputView: View {
-    @State private var isPresented = false
-    @State private var isLoading = false
     @State private var text = ""
-    @State private var output: String?
-
-    private let api = API()
+    @State private var target: Target?
 
     var body: some View {
         Form {
@@ -58,46 +54,12 @@ struct InputView: View {
                     TextField("value", text: $text)
                 }
             }
-            HStack {
-                Button(action: {
-                    self.tapButton()
-                }, label: {
-                    Text("Request")
-                })
-                Spacer()
-                ActivityIndicator(isAnimating: $isLoading, style: .medium)
+            NavigationLink(destination:
+                OutputView(url: text)
+                    .navigationBarTitle("Response")
+            ) {
+                Text("Request")
             }
-        }.sheet(isPresented: $isPresented) {
-            OutputView(self.output)
-        }
-    }
-}
-
-extension InputView {
-    private func tapButton() {
-        guard let url = URL(string: text) else {
-            return
-        }
-
-        let target = Target(baseURL: url,
-                            path: "",
-                            method: .get,
-                            task: .requestPlain)
-        var output: String?
-        _ = async { _ in
-            self.isLoading = true
-            let result = try await(self.api.request(target: target))
-            switch result {
-            case .success(let response):
-                output = String(data: response.data, encoding: .utf8)
-            case .failure(let error):
-                output = error.errorDescription
-            }
-        }.then {
-            self.output = output
-            self.isPresented = true
-        }.always {
-            self.isLoading = false
         }
     }
 }
