@@ -16,6 +16,7 @@
 		ADF08FA223F7862D007C0263 /* Moya in Frameworks */ = {isa = PBXBuildFile; productRef = ADF08FA123F7862D007C0263 /* Moya */; };
 		ADF08FA523F786DA007C0263 /* Hydra in Frameworks */ = {isa = PBXBuildFile; productRef = ADF08FA423F786DA007C0263 /* Hydra */; };
 		ADF08FA823F7950B007C0263 /* JGProgressHUD in Frameworks */ = {isa = PBXBuildFile; productRef = ADF08FA723F7950B007C0263 /* JGProgressHUD */; };
+		ADF08FAF23F79B3F007C0263 /* API.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADF08FAE23F79B3F007C0263 /* API.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -27,6 +28,7 @@
 		ADF08F9523F782FC007C0263 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		ADF08F9823F782FC007C0263 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		ADF08F9A23F782FC007C0263 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		ADF08FAE23F79B3F007C0263 /* API.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = API.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -68,6 +70,7 @@
 				ADF08F9223F782FC007C0263 /* Assets.xcassets */,
 				ADF08F9723F782FC007C0263 /* LaunchScreen.storyboard */,
 				ADF08F9A23F782FC007C0263 /* Info.plist */,
+				ADF08FAD23F79B2D007C0263 /* Model */,
 				ADF08F9423F782FC007C0263 /* Preview Content */,
 			);
 			path = Postable;
@@ -79,6 +82,14 @@
 				ADF08F9523F782FC007C0263 /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		ADF08FAD23F79B2D007C0263 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				ADF08FAE23F79B3F007C0263 /* API.swift */,
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -185,6 +196,7 @@
 			files = (
 				ADF08F8D23F782F9007C0263 /* AppDelegate.swift in Sources */,
 				ADF08F8F23F782F9007C0263 /* SceneDelegate.swift in Sources */,
+				ADF08FAF23F79B3F007C0263 /* API.swift in Sources */,
 				ADF08F9123F782F9007C0263 /* ContentView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
