@@ -15,6 +15,7 @@
 		ADF08F9923F782FC007C0263 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = ADF08F9723F782FC007C0263 /* LaunchScreen.storyboard */; };
 		ADF08FA223F7862D007C0263 /* Moya in Frameworks */ = {isa = PBXBuildFile; productRef = ADF08FA123F7862D007C0263 /* Moya */; };
 		ADF08FA523F786DA007C0263 /* Hydra in Frameworks */ = {isa = PBXBuildFile; productRef = ADF08FA423F786DA007C0263 /* Hydra */; };
+		ADF08FA823F7950B007C0263 /* JGProgressHUD in Frameworks */ = {isa = PBXBuildFile; productRef = ADF08FA723F7950B007C0263 /* JGProgressHUD */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -34,6 +35,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				ADF08FA223F7862D007C0263 /* Moya in Frameworks */,
+				ADF08FA823F7950B007C0263 /* JGProgressHUD in Frameworks */,
 				ADF08FA523F786DA007C0263 /* Hydra in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -98,6 +100,7 @@
 			packageProductDependencies = (
 				ADF08FA123F7862D007C0263 /* Moya */,
 				ADF08FA423F786DA007C0263 /* Hydra */,
+				ADF08FA723F7950B007C0263 /* JGProgressHUD */,
 			);
 			productName = Postable;
 			productReference = ADF08F8923F782F9007C0263 /* Postable.app */;
@@ -130,6 +133,7 @@
 			packageReferences = (
 				ADF08FA023F7862D007C0263 /* XCRemoteSwiftPackageReference "Moya" */,
 				ADF08FA323F786DA007C0263 /* XCRemoteSwiftPackageReference "Hydra" */,
+				ADF08FA623F7950B007C0263 /* XCRemoteSwiftPackageReference "JGProgressHUD" */,
 			);
 			productRefGroup = ADF08F8A23F782F9007C0263 /* Products */;
 			projectDirPath = "";
@@ -370,6 +374,14 @@
 				minimumVersion = 2.0.2;
 			};
 		};
+		ADF08FA623F7950B007C0263 /* XCRemoteSwiftPackageReference "JGProgressHUD" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/JonasGessner/JGProgressHUD.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 2.1.0;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -382,6 +394,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = ADF08FA323F786DA007C0263 /* XCRemoteSwiftPackageReference "Hydra" */;
 			productName = Hydra;
+		};
+		ADF08FA723F7950B007C0263 /* JGProgressHUD */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = ADF08FA623F7950B007C0263 /* XCRemoteSwiftPackageReference "JGProgressHUD" */;
+			productName = JGProgressHUD;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};
