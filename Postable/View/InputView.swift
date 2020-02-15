@@ -11,6 +11,7 @@ import Hydra
 
 struct InputView: View {
     @State private var isPresented = false
+    @State private var isLoading = false
     @State private var text = ""
     @State private var output: String?
 
@@ -20,6 +21,8 @@ struct InputView: View {
         Form {
             Section(header: Text("URL")) {
                 TextField("URL", text: $text)
+                    .textContentType(.URL)
+                    .autocapitalization(.none)
             }
             Section(header: Text("Header")) {
                 HStack {
@@ -55,11 +58,15 @@ struct InputView: View {
                     TextField("value", text: $text)
                 }
             }
-            Button(action: {
-                self.tapButton()
-            }, label: {
-                Text("Button")
-            })
+            HStack {
+                Button(action: {
+                    self.tapButton()
+                }, label: {
+                    Text("Request")
+                })
+                Spacer()
+                ActivityIndicator(isAnimating: $isLoading, style: .medium)
+            }
         }.sheet(isPresented: $isPresented) {
             OutputView(self.output)
         }
@@ -78,6 +85,7 @@ extension InputView {
                             task: .requestPlain)
         var output: String?
         _ = async { _ in
+            self.isLoading = true
             let result = try await(self.api.request(target: target))
             switch result {
             case .success(let response):
@@ -87,7 +95,9 @@ extension InputView {
             }
         }.then {
             self.output = output
-            self.isPresented.toggle()
+            self.isPresented = true
+        }.always {
+            self.isLoading = false
         }
     }
 }
