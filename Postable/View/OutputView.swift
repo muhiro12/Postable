@@ -23,8 +23,11 @@ struct OutputView: View {
 
     var body: some View {
         ZStack {
-            Form {
-                Text(data ?? "Response is empty.")
+            GeometryReader { geometry in
+                Form {
+                    TextView(text: self.$data, isEditable: false)
+                        .frame(height: geometry.size.height)
+                }
             }
             ActivityIndicator(isAnimating: $isLoading, style: .large)
         }.onAppear {

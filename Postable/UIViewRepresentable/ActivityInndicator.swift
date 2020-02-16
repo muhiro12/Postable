@@ -7,7 +7,6 @@
 //
 
 import SwiftUI
-import UIKit
 
 struct ActivityIndicator: UIViewRepresentable {
     typealias UIViewType = UIActivityIndicatorView
