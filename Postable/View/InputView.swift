@@ -10,25 +10,25 @@ import SwiftUI
 import Hydra
 
 struct InputView: View {
-    @State private var url = ""
-    @State private var headersCount = 0
+    @State private var urlText = ""
+    @State private var methodSelection = 0
+    @State private var headerCount = 0
     @State private var parametersCount = 0
+
+    private let methods = ["GET", "POST"]
 
     var body: some View {
         Form {
             Section(header: Text("URL")) {
-                TextField("https://example.com", text: $url)
+                TextField("https://example.com", text: $urlText)
                     .textContentType(.URL)
                     .autocapitalization(.none)
             }
             Section(header: Text("Method")) {
-                NavigationLink(destination:
-                    Form {
-                        Text("GET")
-                        Text("POST")
-                    }.navigationBarTitle("Header")
-                ) {
-                    Text("GET")
+                Picker(selection: $methodSelection, label: Text("")) {
+                    ForEach(0..<methods.count) { index in
+                        Text(self.methods[index])
+                    }
                 }
             }
             Section(header:
@@ -36,22 +36,22 @@ struct InputView: View {
                     Text("Header")
                     Spacer()
                     Button(action: {
-                        if self.headersCount > 0 {
-                            self.headersCount -= 1
+                        if self.headerCount > 0 {
+                            self.headerCount -= 1
                         }
                     }, label: {
                         Image(systemName: "minus")
                     })
-                    Text(headersCount.description)
+                    Text(headerCount.description)
                     Button(action: {
-                        self.headersCount += 1
+                        self.headerCount += 1
                     }, label: {
                         Image(systemName: "plus")
                     })
                 }
             ) {
                 NavigationLink(destination:
-                    KeyValueView(count: headersCount)
+                    KeyValueView(count: headerCount)
                         .navigationBarTitle("Header")
                 ) {
                     Text("{key:value}")
@@ -84,7 +84,7 @@ struct InputView: View {
                 }
             }
             NavigationLink(destination:
-                OutputView(url: url)
+                OutputView(url: urlText)
                     .navigationBarTitle("Response")
             ) {
                 Text("Request")
