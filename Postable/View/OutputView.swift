@@ -10,7 +10,7 @@ import SwiftUI
 import Hydra
 
 struct OutputView: View {
-    @State var data: String?
+    @State var text: String?
     @State private var isLoading = false
 
     private let api = API()
@@ -22,14 +22,14 @@ struct OutputView: View {
     }
 
     var body: some View {
-        ZStack {
-            GeometryReader { geometry in
+        GeometryReader { geometry in
+            ZStack {
                 Form {
-                    TextView(text: self.$data, isEditable: false)
-                        .frame(height: geometry.size.height)
+                    TextView(text: self.$text, isEditable: false)
+                        .frame(height: geometry.size.height - geometry.frame(in: .global).minY)
                 }
+                ActivityIndicator(isAnimating: self.$isLoading, style: .large)
             }
-            ActivityIndicator(isAnimating: $isLoading, style: .large)
         }.onAppear {
             self.request()
         }
@@ -46,18 +46,16 @@ extension OutputView {
                             path: "",
                             method: .get,
                             task: .requestPlain)
-        var output: String?
+
         _ = async { _ in
             self.isLoading = true
             let result = try await(self.api.request(target: target))
             switch result {
             case .success(let response):
-                output = String(data: response.data, encoding: .utf8)
+                self.text = String(data: response.data, encoding: .utf8) ?? "Unsupported format (Only UTF-8 is supported.)"
             case .failure(let error):
-                output = error.errorDescription
+                self.text = error.errorDescription
             }
-        }.then {
-            self.data = output
         }.always {
             self.isLoading = false
         }
