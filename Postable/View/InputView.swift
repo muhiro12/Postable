@@ -9,7 +9,7 @@
 import SwiftUI
 
 struct InputView: View {
-    @State private var text: String?
+    @Binding var text: String
 
     var body: some View {
         GeometryReader { geometry in
@@ -22,7 +22,8 @@ struct InputView: View {
 }
 
 struct InputView_Previews: PreviewProvider {
+    @State private static var text = ""
     static var previews: some View {
-        InputView()
+        InputView(text: $text)
     }
 }

@@ -11,8 +11,8 @@ import SwiftUI
 struct MainView: View {
     @State private var urlText = ""
     @State private var methodSelection = 0
-    @State private var headerCount = 0
-    @State private var parametersCount = 0
+    @State private var headerText = ""
+    @State private var parameterText = ""
 
     private let methods = ["GET", "POST"]
 
@@ -32,18 +32,18 @@ struct MainView: View {
             }
             Section(header: Text("Header")) {
                 NavigationLink(destination:
-                    InputView()
+                    InputView(text: $headerText)
                         .navigationBarTitle("Header")
                 ) {
-                    Text("{key:value}")
+                    Text(headerText)
                 }
             }
             Section(header: Text("Parameter")) {
                 NavigationLink(destination:
-                    InputView()
+                    InputView(text: $parameterText)
                         .navigationBarTitle("Parameter")
                 ) {
-                    Text("{key:value}")
+                    Text(parameterText)
                 }
             }
             NavigationLink(destination:

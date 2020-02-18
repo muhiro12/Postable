@@ -10,16 +10,12 @@ import SwiftUI
 import Hydra
 
 struct OutputView: View {
-    @State var text: String?
+    @State var text: String = ""
     @State private var isLoading = false
 
     private let api = API()
 
     let url: String?
-
-    init(url: String?) {
-        self.url = url
-    }
 
     var body: some View {
         GeometryReader { geometry in
@@ -54,7 +50,7 @@ extension OutputView {
             case .success(let response):
                 self.text = String(data: response.data, encoding: .utf8) ?? "Unsupported format (Only UTF-8 is supported.)"
             case .failure(let error):
-                self.text = error.errorDescription
+                self.text = error.errorDescription ?? "Error"
             }
         }.always {
             self.isLoading = false
